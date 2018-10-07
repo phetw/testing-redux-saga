@@ -12,10 +12,10 @@ export function* fetchPosts() {
     yield put({ type: 'REQUEST_POSTS_ERROR' })
   }
 }
-function* actionWatcher() {
+export function* fetchPostsWatcher() {
   yield takeLatest('REQUEST_POSTS', fetchPosts)
 }
 
 export default function* rootSaga() {
-  yield all([actionWatcher()])
+  yield all([fetchPostsWatcher()])
 }
