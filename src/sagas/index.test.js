@@ -8,7 +8,8 @@ import getPostAPI from '../api'
 describe('POSTS', () => {
   test('fetchPosts watcher', () => {
     const gen = fetchPostsWatcher()
-    assert.deepEqual(gen.next().value, takeLatest('REQUEST_POSTS', fetchPosts), 'it must take REQUEST_POSTS action')
+    assert.deepEqual(gen.next().value, takeLatest('REQUEST_POSTS', fetchPosts), 'fetchPosts watcher must takeLatest REQUEST_POSTS action')
+    assert.deepEqual(gen.next(), { done: true, value: undefined }, 'fetchPosts watcher must be done')
   })
 
   test('fetchPosts [SUCCESS]', () => {
