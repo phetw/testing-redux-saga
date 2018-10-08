@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import FeedItem from './FeedItem'
 
 import './Feed.css'
 
@@ -8,11 +9,8 @@ class Feed extends Component {
     const { posts } = this.props
     return posts ? (
       <section className="news-item">
-        {posts.map(({ id, title, body }) => (
-          <article key={id}>
-            <h3>{title}</h3>
-            <p>{body}</p>
-          </article>
+        {posts.map(post => (
+          <FeedItem post={post} />
         ))}
       </section>
     ) : (
